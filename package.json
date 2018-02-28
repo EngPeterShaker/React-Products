@@ -1,13 +1,13 @@
 {
-  "name": "react-products",
+  "name": "tiny-react-env",
   "version": "1.0.0",
-  "description": "Search Products in React environment using Webpack, Babel, and Sass",
+  "description": "Roll your own tiny React environment using Webpack, Babel, and Sass",
   "main": "src/App.js",
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
     "deploy": "webpack && surge -p ./build/ -d tiny-react-env.surge.sh"
   },
-  "author": "Peter Shaker",
+  "author": "Valentin Radulescu",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -40,10 +40,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EngPeterShaker/React-Products.git"
+    "url": "git+https://github.com/RadValentin/tiny-react-env.git"
   },
   "keywords": [],
-  "homepage": "https://github.com/EngPeterShaker/React-Products#readme",
+  "bugs": {
+    "url": "https://github.com/RadValentin/tiny-react-env/issues"
+  },
+  "homepage": "https://github.com/RadValentin/tiny-react-env#readme",
   "devDependencies": {
     "redux-devtools": "^3.4.1"
   }
