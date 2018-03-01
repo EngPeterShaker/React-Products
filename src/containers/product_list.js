@@ -1,15 +1,15 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import SearchBar from "../containers/search_bar";
+
 // import {selectBook} from "../actions/index";
-import {bindActionCreators} from "redux";
+// import {bindActionCreators} from "redux";
 import './product_list.scss';
 
 class BookList extends Component {
-    renderList() {
+renderList(products) {
         // onClick={() => this.props.selectBook(product)}
-        return this
-            .props
-            .products
+        return products
             .map((product, index) => {
                 return (
                   
@@ -26,10 +26,15 @@ class BookList extends Component {
     }
 
     render() {
+const {products} = this.props;
         return (
             <div className="row">
+< SearchBar />
+
                 <div className="list-group">
-                    {this.renderList()}
+{
+    this.renderList(products)
+}
                 </div>
             </div>
         )

@@ -9,15 +9,16 @@ import reducers from '../reducers';
 
 
 import ProductList from "../containers/product_list";
-// import BookDetail from "../containers/book-detail";
+// import SearchBar from "../containers/search_bar";
 import 'bootstrap4-plus-jquery';
 import './App.scss';
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 class App extends Component {
   render() {
-    return( <div>
-< ProductList /> 
+    return( 
+    <div>
+      <ProductList /> 
     </div>)
   }
 }
