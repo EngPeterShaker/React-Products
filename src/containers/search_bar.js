@@ -28,12 +28,9 @@ this
 
     render() {
         return (
-            <div onSubmit={this.onFormSubmit} className="input-group">
+            <div onSubmit={this.onInputChange} className="input-group">
                 <div className = "wrap" > <div className="search">
                     <input type = "text" className = "searchTerm" placeholder = "What are you looking for?" value = {this.state.term} onChange = {this.onInputChange}autoFocus />
-                        <button type="submit" className="searchButton">
-                            <i className="fa fa-search"></i>
-                        </button>
                     </div>
                 </div>
             </div>
