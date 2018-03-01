@@ -2,4 +2,4 @@
 #Steps to Produce:
 - npm install
 - npm start 
--localhost:8080 
+- open [localhost:8080](localhost:8080) 
