@@ -1,35 +1,63 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import SearchBar from "../containers/search_bar";
-
-// import {selectBook} from "../actions/index";
-// import {bindActionCreators} from "redux";
 import './product_list.scss';
 
 class BookList extends Component {
+constructor(props) {
+    super(props);
+this.state = {
+    term: '',
+    items:[]
+};
+this.handleChildFunc = this
+    .handleChildFunc
+    .bind(this);
+}
+handleChildFunc(term){
+this.setState({term})
+}
 renderList(products) {
-        // onClick={() => this.props.selectBook(product)}
-        return products
+    let updatedList=[];
+let searchTerm = this.state.term
+
+if (searchTerm.length > 1){
+     updatedList = products.filter(function (item) {
+return (item.name.toLowerCase().search(searchTerm.toLowerCase()) !== -1);
+    });
+    console.log(updatedList);
+}else {//show all products if no search term
+updatedList = products;
+}
+
+if (updatedList.length>0){
+return updatedList
             .map((product, index) => {
                 return (
-                  
-<div key = {index} className = "card" > 
-<img src={product.picture} alt="Avatar"/>
-    <div className="container">
-        <h4> <b> {product.name} </b></h4>
-<p className="prices"> {product.price} </p>
-    </div>
-</div>
-
+                <div key = {index} className = "card" > 
+                <img src={product.picture} alt="Avatar"/>
+                    <div className="container">
+                        <h4> <b> {product.name} </b></h4>
+                <p className="prices"> {product.price} </p>
+                    </div>
+                </div>
                 );
             });
+        }else{
+            return (
+                <div>
+                <p>No Items found !</p>
+            </div>
+            )
+        }
     }
 
     render() {
 const {products} = this.props;
         return (
             <div className="row">
-< SearchBar />
+< SearchBar myFunc = {
+    this.handleChildFunc} />
 
                 <div className="list-group">
 {
@@ -41,23 +69,9 @@ const {products} = this.props;
     }
 }
 function mapStateToProps(state) {
-    //whatever is returned will showup as props insde booklist
     return {
         products: state.products
-        // asdf:123
     }
 }
 
-//anything returned from this fn will end up as propdon the booklist container
-// function mapDispatchToProps(dispatch) {
-//     // whenever selectbook is called , the result should be passed to all of our
-//     // reducers
-//     return bindActionCreators({
-//         selectBook: selectBook
-//     }, dispatch)
-// }
-
-// promote BookList from a component to a contaier - it needs to know about this
-// new dispatch metho , selectbook . make it available as a prop
-// export default connect(mapStateToProps, mapDispatchToProps)(BookList)
 export default connect(mapStateToProps)(BookList)
